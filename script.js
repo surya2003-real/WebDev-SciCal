@@ -68,6 +68,14 @@ Array.from(buttons).forEach((button)=>{
         string = eval(string)**2;
         document.querySelector('input').value = string;
     }
+    else if(val == '%'){
+        string = eval(string)/100;
+        document.querySelector('input').value = string;
+    }
+    else if(val == 'S'){
+        string = string+""
+        document.querySelector('input').value = string;
+    }
     else{ 
     console.log(e.target)
     string = string + e.target.innerHTML;
