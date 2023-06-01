@@ -1,10 +1,29 @@
 let string = "";
 let buttons = document.querySelectorAll('.button');
+function checkInput(str) {
+	for (var i = 0; i < str.length; i++) {
+		var ch = str.charAt(i);
+		if (ch < "0" || ch > "9") {
+			if (ch != "/" && ch != "*" && ch != "+" && ch != "-" && ch != "."
+				&& ch != "(" && ch!= ")" && ch != "%") {
+				alert("invalid entry!")
+				return false
+				}
+			}
+		}
+		return true
+}
 Array.from(buttons).forEach((button)=>{
   button.addEventListener('click', (e)=>{
     val=e.target.innerHTML;
     if( val== '='){
-      string = eval(string);
+    
+      if(checkInput(str)){
+        string = eval(string);
+      }
+      else{
+        string=''
+      }
       document.querySelector('input').value = string;
     }
     else if(val == 'C'){
@@ -33,7 +52,21 @@ Array.from(buttons).forEach((button)=>{
         document.querySelector('input').value = string;
     }
     else if(val == 'e'){
-        string = Math.exp(1);
+        if(string==""){
+            string = Math.exp(1);
+        }
+        else{
+            string = string+'*'+Math.exp(1);
+        }
+        document.querySelector('input').value = string;
+    }
+    else if(val == 'π'){
+        if(string==""){
+            string = Math.PI;
+        }
+        else{
+            string = string+'*'+Math.PI;
+        }
         document.querySelector('input').value = string;
     }
     else if(val == 'log'){
@@ -65,7 +98,8 @@ Array.from(buttons).forEach((button)=>{
         document.querySelector('input').value = string;
     }
     else if(val == 'xⁿ'){
-        string = eval(string)**2;
+        let arr=string.split(" ");
+        string=eval(arr[0])**eval(arr[1]);
         document.querySelector('input').value = string;
     }
     else if(val == '%'){
@@ -73,7 +107,7 @@ Array.from(buttons).forEach((button)=>{
         document.querySelector('input').value = string;
     }
     else if(val == 'S'){
-        string = string+""
+        string = string+" "
         document.querySelector('input').value = string;
     }
     else{ 
