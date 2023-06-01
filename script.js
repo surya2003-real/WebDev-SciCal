@@ -6,19 +6,19 @@ function checkInput(str) {
 		if (ch < "0" || ch > "9") {
 			if (ch != "/" && ch != "*" && ch != "+" && ch != "-" && ch != "."
 				&& ch != "(" && ch!= ")" && ch != "%") {
-				alert("invalid entry!")
-				return false
-				}
+				alert("invalid entry!");
+				return false;
+			}
 			}
 		}
-		return true
+		return true;
 }
 Array.from(buttons).forEach((button)=>{
   button.addEventListener('click', (e)=>{
     val=e.target.innerHTML;
     if( val== '='){
     
-      if(checkInput(str)){
+      if(checkInput(string)){
         string = eval(string);
       }
       else{
