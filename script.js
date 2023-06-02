@@ -113,6 +113,9 @@ Array.from(buttons).forEach((button)=>{
     }
     else if(val == 'Inv'){
         string = 1/eval(string);
+        if(string=="Infinity"){
+            string="Division by Zero is Invalid";
+        }
         document.querySelector('input').value = string;
     }
     else if(val == 'EXP'){
