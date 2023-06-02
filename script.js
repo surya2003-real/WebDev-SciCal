@@ -24,6 +24,9 @@ Array.from(buttons).forEach((button)=>{
       else{
         string=''
       }
+      if(string=="Infinity"){
+        string="Division by Zero is Invalid";
+      }
       document.querySelector('input').value = string;
     }
     else if(val == 'C'){
@@ -44,7 +47,12 @@ Array.from(buttons).forEach((button)=>{
         document.querySelector('input').value = string;
     }
     else if(val == '√'){
-        string = Math.sqrt(eval(string));
+        if(eval(string)<0){
+            string="Square root of Negative Number is Invalid";
+        }
+        else{
+            string = Math.sqrt(eval(string));
+        }
         document.querySelector('input').value = string;
     }
     else if(val == 'ln'){
@@ -75,14 +83,32 @@ Array.from(buttons).forEach((button)=>{
     }
     else if(val == 'sin'){
         string = Math.sin(eval(string));
+        if(string< 1e-10 && string>-1e-10){
+            string="0";
+        }
+        // if(string-Math.floor(string)<1e10 && string-Math.floor(string)>-1e10){
+        //     string=Math.floor(string);
+        // }
+        // if(string-Math.ceil(string)<1e10 && string-Math.ceil(string)>-1e10){
+        //     string=Math.ceil(string);
+        // }
         document.querySelector('input').value = string;
     }
     else if(val == 'cos'){
         string = Math.cos(eval(string));
+        if(string< 1e-10 && string>-1e-10){
+            string="0";
+        }
         document.querySelector('input').value = string;
     }
     else if(val == 'tan'){
         string = Math.tan(eval(string));
+        if(string< 1e-10 && string>-1e-16){
+            string="0";
+        }
+        if(string<-1e15 || string>1e15){
+            string="Undefined/Infinity";
+        }
         document.querySelector('input').value = string;
     }
     else if(val == 'Inv'){
